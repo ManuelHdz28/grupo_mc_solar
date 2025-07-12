@@ -1,0 +1,5 @@
+#  .gitignore for a web development project
+/backend/venv/
+/backend/__pycache__/
+/proyecto-pagina-solar/.next/
+/proyecto-pagina-solar/node_modules/
