@@ -25,7 +25,10 @@ SECRET_KEY = 'django-insecure-)!v0wg8f2v6x1a+@r8bko6+w09lo_krtc8e81&3)2=+i&ob0(e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    https://grupo-mc-solar.onrender.com/, # * Permite solicitudes desde el dominio de producción
+    
+]
 
 MEDIA_URL = '/media/' # * URL para acceder a los archivos multimedia
 MEDIA_ROOT = BASE_DIR / 'media' # * Ruta donde se guardarán los archivos multimedia
