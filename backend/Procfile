@@ -1,1 +1,1 @@
-web: python backend/migrate.py
+web: gunicorn backend.config.wsgi
