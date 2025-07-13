@@ -98,15 +98,19 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+import dj_database_url
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'grupomcsolar',
-        'USER': 'admin',
-        'PASSWORD': '222835',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(conn_max_age=600, ssl_require=True),
+    # * Configuración para trabajar en local con PostgreSQL
+    # !   {
+    # !   'ENGINE': 'django.db.backends.postgresql',
+    # !   'NAME': 'grupomcsolar',
+    # !   'USER': 'admin',
+    # !   'PASSWORD': '222835',
+    # !   'HOST': 'localhost',
+    # !   'PORT': '5432',
+    # !   } 
 }
 
 CORS_ALLOWED_ORIGINS = [ # * Permite solicitudes CORS desde el frontend
@@ -114,7 +118,8 @@ CORS_ALLOWED_ORIGINS = [ # * Permite solicitudes CORS desde el frontend
     "http://localhost:9002",
     "http://192.168.56.1:9002",# * Next.js en desarrollo
     # * Si vas a subirlo a producción, añade aquí tu dominio real:
-    # ! "https://proyecto-pagina-solar.vercel.app/",
+    "https://proyecto-pagina-solar.vercel.app/"
+    
 ]
 
 
