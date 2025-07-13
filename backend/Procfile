@@ -1,1 +1,1 @@
-web: python collect_static.py
+web: gunicorn config.wsgi
