@@ -1,1 +1,1 @@
-web: python backend/migrate.py
+web: sh -c "python backend/manage.py migrate && gunicorn backend.config.wsgi"
