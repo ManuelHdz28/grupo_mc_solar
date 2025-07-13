@@ -1,1 +1,1 @@
-web: python collect_static.py
+web: python backend/manage.py collectstatic --noinput
