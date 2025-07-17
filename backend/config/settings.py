@@ -27,8 +27,7 @@ SECRET_KEY = 'django-insecure-)!v0wg8f2v6x1a+@r8bko6+w09lo_krtc8e81&3)2=+i&ob0(e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(",")
-    
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']
 
 
 MEDIA_URL = '/media/' # * URL para acceder a los archivos multimedia
@@ -105,7 +104,15 @@ WSGI_APPLICATION = 'config.wsgi.application'
 import dj_database_url
 
 DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600, ssl_require=True),
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql', # * Motor de base de datos PostgreSQL
+        # * Configuración para trabajar en producción con Clever Cloud
+        'NAME': 'b2ejckpoxq9au5cvzbfn', # * Nombre de la base de datos
+        'USER': 'ukkmthdrlq1rkf2ju6g2', # * Usuario de la base de datos
+        'PASSWORD': 'e09Y1SWuJZURW1vHNyIJ3ynVcafdLd', # * Contraseña de la base de datos
+        'HOST': 'b2ejckpoxq9au5cvzbfn-postgresql.services.clever-cloud.com', # * Host de la base de datos
+        'PORT': 5432, # * Puerto de la base de datos
+    }
     # * Configuración para trabajar en local con PostgreSQL
     # !   {
     # !   'ENGINE': 'django.db.backends.postgresql',
@@ -122,7 +129,7 @@ CORS_ALLOWED_ORIGINS = [ # * Permite solicitudes CORS desde el frontend
     "http://localhost:9002",
     "http://192.168.56.1:9002",# * Next.js en desarrollo
     # * Si vas a subirlo a producción, añade aquí tu dominio real:
-    "https://proyecto-pagina-solar.vercel.app/"
+    # "https://proyecto-pagina-solar.vercel.app/"
     
 ]
 
