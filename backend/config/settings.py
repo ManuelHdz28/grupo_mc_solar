@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
+from decouple import config
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -22,23 +23,23 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-)!v0wg8f2v6x1a+@r8bko6+w09lo_krtc8e81&3)2=+i&ob0(e'
+SECRET_KEY = config('SECRET_KEY', default='django-insecure-secret-key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']
+ALLOWED_HOSTS = []
 
 
 MEDIA_URL = '/media/' # * URL para acceder a los archivos multimedia
 MEDIA_ROOT = BASE_DIR / 'media' # * Ruta donde se guardarán los archivos multimedia
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = "tu_correo@gmail.com" # * Cambia esto por tu correo de Gmail
-EMAIL_HOST_PASSWORD = "TU_CONTRASEÑA_DE_APLICACION" # * Cambia esto por tu contraseña de aplicación de Gmail
+EMAIL_HOST = config('EMAIL_HOST') # * Servidor SMTP de Gmail
+EMAIL_PORT = config('EMAIL_PORT', cast=int)
+EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
+EMAIL_HOST_USER = config('EMAIL_HOST_USER') # * Cambia esto por tu correo de Gmail
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD') # * Cambia esto por tu contraseña de aplicación de Gmail
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
@@ -107,11 +108,11 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql', # * Motor de base de datos PostgreSQL
         # * Configuración para trabajar en producción con Clever Cloud
-        'NAME': 'b2ejckpoxq9au5cvzbfn', # * Nombre de la base de datos
-        'USER': 'ukkmthdrlq1rkf2ju6g2', # * Usuario de la base de datos
-        'PASSWORD': 'e09Y1SWuJZURW1vHNyIJ3ynVcafdLd', # * Contraseña de la base de datos
-        'HOST': 'b2ejckpoxq9au5cvzbfn-postgresql.services.clever-cloud.com', # * Host de la base de datos
-        'PORT': 5432, # * Puerto de la base de datos
+        'NAME': config('DB_NAME'), # * Nombre de la base de datos
+        'USER': config('DB_USER'), # * Usuario de la base de datos
+        'PASSWORD': config('DB_PASSWORD'), # * Contraseña de la base de datos
+        'HOST': config('DB_HOST'), # * Host de la base de datos
+        'PORT': config('DB_PORT', cast=int), # * Puerto de la base de datos
     }
     # * Configuración para trabajar en local con PostgreSQL
     # !   {
