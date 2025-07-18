@@ -35,11 +35,11 @@ MEDIA_URL = '/media/' # * URL para acceder a los archivos multimedia
 MEDIA_ROOT = BASE_DIR / 'media' # * Ruta donde se guardarán los archivos multimedia
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = config('EMAIL_HOST') # * Servidor SMTP de Gmail
-EMAIL_PORT = config('EMAIL_PORT', cast=int)
-EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
-EMAIL_HOST_USER = config('EMAIL_HOST_USER') # * Cambia esto por tu correo de Gmail
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD') # * Cambia esto por tu contraseña de aplicación de Gmail
+EMAIL_HOST = config('EMAIL_HOST', default='smtp.gmail.com') # * Servidor SMTP de Gmail
+EMAIL_PORT = config('EMAIL_PORT', cast=int) # * Puerto SMTP
+EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=True, cast=bool) # * Usar TLS para la conexión segura
+EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='tu_correo@gmail.com') # * Cambia esto por tu correo de Gmail
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='TU_CONTRASEÑA_DE_APLICACION') # * Cambia esto por tu contraseña de aplicación de Gmail
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
