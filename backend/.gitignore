@@ -1,0 +1,19 @@
+# Ignorar archivos y carpetas innecesarias
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+*.log
+*.env
+*.venv
+.env/
+.venv/
+
+# Ignorar archivos de medios en producción
+/media/
+# Puedes permitir una subcarpeta específica si quieres
+# !/media/product_images/
+
+# Ignorar archivos estáticos recolectados por collectstatic
+/staticfiles/
