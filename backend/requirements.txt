@@ -9,3 +9,4 @@ gunicorn
 psycopg2-binary
 dj-database-url
 psycopg2.binary==2.9.7
+python-decouple
