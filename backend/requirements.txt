@@ -6,7 +6,6 @@ pillow==11.2.1
 sqlparse==0.5.3
 tzdata==2025.2
 gunicorn
-psycopg2-binary
 dj-database-url
 psycopg2.binary==2.9.7
 python-decouple
