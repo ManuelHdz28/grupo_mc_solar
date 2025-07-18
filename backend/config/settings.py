@@ -130,7 +130,7 @@ CORS_ALLOWED_ORIGINS = [ # * Permite solicitudes CORS desde el frontend
     "http://localhost:9002",
     "http://192.168.56.1:9002",# * Next.js en desarrollo
     # * Si vas a subirlo a producción, añade aquí tu dominio real:
-     "https://proyecto-pagina-solar.vercel.app/"
+     "https://proyecto-pagina-solar.vercel.app",
     
 ]
 
