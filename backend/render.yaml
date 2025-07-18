@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: grupo-mc-solar
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn config.wsgi:application"
+    staticPublishPath: media
+    routes:
+      - type: static
+        source: /media
+        path: /media
