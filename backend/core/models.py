@@ -1,4 +1,10 @@
 from django.db import models
+import os
+
+def upload_to(instance, filename):
+    name, ext = os.path.splitext(filename)
+    return f'product_images/{name}{ext.lower()}'
+
 
 # Create your models here.
 class Category(models.Model):
@@ -18,7 +24,7 @@ class Product(models.Model):
 
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images')
-    image = models.ImageField(upload_to='product_images/')
+    image = models.ImageField(upload_to=upload_to)
 
 class ContactMessage(models.Model):
     name = models.CharField(max_length=100)
