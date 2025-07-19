@@ -13,6 +13,10 @@ class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
 
 class ProductViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Product.objects.all()
+
+    def get_serializer_context(self):
+        return {'request': self.request}
+
     serializer_class = ProductSerializer
 
 class ContactMessageViewSet(viewsets.ModelViewSet):

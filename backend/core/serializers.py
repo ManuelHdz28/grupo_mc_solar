@@ -2,6 +2,14 @@ from rest_framework import serializers
 from .models import Category, Product, ProductImage, ContactMessage
 
 class ProductImageSerializer(serializers.ModelSerializer):
+    image = serializers.SerializerMethodField()
+
+    def get_image(self, obj):
+        request = self.context.get('request')
+        if request:
+            return request.build_absolute_uri(obj.image.url)
+        return obj.image.url
+
     class Meta:
         model = ProductImage
         fields = ['id', 'image']
