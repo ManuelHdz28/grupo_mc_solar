@@ -31,6 +31,20 @@ class ProductImageAdmin(admin.ModelAdmin):
         return "No image"
     image_preview.short_description = "Preview"
     
+class ContactMessageAdmin(admin.ModelAdmin):
+    list_display = ('email', 'created_at')
+    readonly_fields = ('name', 'email', 'message', 'created_at')
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    # Para bloquear también el borrado:
+    # def has_delete_permission(self, request, obj=None):
+    #     return False
+    
 admin.site.register(Category)
 admin.site.register(Product)
 admin.site.register(ProductImage, ProductImageAdmin)
