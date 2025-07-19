@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY', default='django-insecure-secret-key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=True, cast=bool)
+DEBUG = config('DEBUG',  cast=bool)
 
 ALLOWED_HOSTS = []
 
@@ -46,6 +46,15 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='tu_correo@gmail.com') # * C
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='TU_CONTRASEÑA_DE_APLICACION') # * Cambia esto por tu contraseña de aplicación de Gmail
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+# Configuración de Cloudinary para almacenamiento de archivos multimedia
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
 
@@ -59,6 +68,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    'cloudinary_storage',
+    'cloudinary',
     
     # ^ apps de terceros
     'rest_framework',
