@@ -27,6 +27,9 @@ class Product(models.Model):
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images')
     image = CloudinaryField('image')  # ✅ Esto guarda en Cloudinary
+    
+    def __str__(self):
+        return f"{self.product.name} - {self.image.public_id if hasattr(self.image, 'public_id') else 'sin imagen'}"
 
 class ContactMessage(models.Model):
     name = models.CharField(max_length=100)
