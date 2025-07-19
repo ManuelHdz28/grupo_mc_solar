@@ -1,5 +1,7 @@
 from django.db import models
 import os
+from cloudinary.models import CloudinaryField
+
 
 def upload_to(instance, filename):
     name, ext = os.path.splitext(filename)
@@ -24,7 +26,7 @@ class Product(models.Model):
 
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images')
-    image = models.ImageField(upload_to=upload_to)
+    image = CloudinaryField('image')  # ✅ Esto guarda en Cloudinary
 
 class ContactMessage(models.Model):
     name = models.CharField(max_length=100)
