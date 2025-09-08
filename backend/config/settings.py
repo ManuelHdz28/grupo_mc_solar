@@ -28,7 +28,7 @@ SECRET_KEY = config('SECRET_KEY', default='django-insecure-secret-key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG',  cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 
 RENDER_EXTERNAL_HOSTNAME = config('RENDER_EXTERNAL_HOSTNAME', default=None, cast=str)
 if RENDER_EXTERNAL_HOSTNAME:
@@ -150,6 +150,8 @@ CORS_ALLOWED_ORIGINS = [ # * Permite solicitudes CORS desde el frontend
     # * Si vas a subirlo a producción, añade aquí tu dominio real:
      "https://proyecto-pagina-solar.vercel.app",
      "https://proyecto-pagina-solar-jbfeum1tn-manuelh28s-projects.vercel.app",
+     "https://proyecto-pagina-solar-eta.vercel.app/",
+     
      
 ]
 
