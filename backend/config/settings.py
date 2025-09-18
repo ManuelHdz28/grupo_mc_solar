@@ -33,6 +33,9 @@ ALLOWED_HOSTS = []
 RENDER_EXTERNAL_HOSTNAME = config('RENDER_EXTERNAL_HOSTNAME', default=None, cast=str)
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+    BASE_URL = f'https://{RENDER_EXTERNAL_HOSTNAME}'
+else:
+    BASE_URL = 'http://localhost:8000'  # o la URL que uses en desarrollo
 
 
 MEDIA_URL = '/media/' # * URL para acceder a los archivos multimedia
