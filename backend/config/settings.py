@@ -147,14 +147,9 @@ DATABASES = {
 }
 
 CORS_ALLOWED_ORIGINS = [ # * Permite solicitudes CORS desde el frontend
-    #"http://localhost:3000",
-    #"http://localhost:9002",
-    #"http://192.168.56.1:9002",# * Next.js en desarrollo
-    # * Si vas a subirlo a producción, añade aquí tu dominio real:
-     "https://proyecto-pagina-solar.vercel.app",
-     "https://proyecto-pagina-solar-jbfeum1tn-manuelh28s-projects.vercel.app",
-     "https://proyecto-pagina-solar-eta.vercel.app",
-     "https://www.grupomcsolar.com",
+    "https://grupomcsolar.com",
+    "https://www.grupomcsolar.com",
+    "https://proyecto-pagina-solar.vercel.app",
      
 ]
 
