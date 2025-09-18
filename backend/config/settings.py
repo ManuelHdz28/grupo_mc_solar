@@ -151,7 +151,7 @@ CORS_ALLOWED_ORIGINS = [ # * Permite solicitudes CORS desde el frontend
      "https://proyecto-pagina-solar.vercel.app",
      "https://proyecto-pagina-solar-jbfeum1tn-manuelh28s-projects.vercel.app",
      "https://proyecto-pagina-solar-eta.vercel.app",
-     
+     "https://www.grupomcsolar.com",
      
 ]
 
